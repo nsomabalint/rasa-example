@@ -1,0 +1,137 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - good afternoon
+    - hey there
+    - greetings
+    - howdy
+    - sup
+    - what's up
+    - hi there
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you around
+    - see you later
+    - have a nice day
+    - catch you later
+    - until next time
+    - bye bye
+    - take care
+    - talk to you later
+    - farewell
+
+- intent: chitchat
+  examples: |
+    - how are you?
+    - how's it going?
+    - what's new?
+    - how's your day?
+    - how was your weekend?
+    - how's life?
+    - what's happening?
+    - how are things?
+    - are you a bot?
+    - are you a human?
+    - who created you?
+    - what can you do?
+    - what's your name?
+    - tell me about yourself
+    - who are you?
+
+- intent: send_money
+  examples: |
+    - I want to send money
+    - transfer money to [John](recipient)
+    - send $[500](amount) to [Sarah](recipient)
+    - can I transfer some funds
+    - I need to wire $[1000](amount)
+    - send money to [my mom](recipient)
+    - transfer $[50](amount) to my [savings](account_type) account
+    - I'd like to make a payment of $[200](amount)
+    - wire $[750](amount) to [David](recipient)
+    - send [100 dollars](amount) to [my brother](recipient)
+    - transfer funds to [Jane](recipient)
+    - move $[300](amount) to my [savings](account_type)
+    - send money
+    - make a transfer
+    - send $[1250](amount) to [Robert](recipient) right away
+    - transfer $[75](amount) to [my landlord](recipient)
+    - move money from [checking](account_type) to [savings](account_type)
+    - send $[200](amount) from my [checking](account_type) account
+    # Form-style brief responses
+    - to [Joe](recipient)
+    - [Joe](recipient)
+    - [Sarah](recipient)
+    - [Mom](recipient)
+    - [my friend](recipient)
+    - $[50](amount)
+    - [50 dollars](amount)
+    - [50](amount)
+    - [75 usd](amount)
+    - [100](amount)
+    - [twenty](amount)
+    - [five hundred](amount)
+    - [1000](amount)
+    - [$25](amount)
+
+- intent: query_balance
+  examples: |
+    - what's my balance
+    - how much money do I have
+    - check my account balance
+    - show me my balance
+    - what's my current balance
+    - how much is in my account
+    - what's my [checking](account_type) balance
+    - how much do I have in [savings](account_type)
+    - check balance
+    - account balance
+    - show balance
+    - how much money is in my [checking](account_type) account
+    - what's left in my account
+    - do I have enough money
+    - balance inquiry
+    - check my [savings](account_type) balance
+    - what's the balance of my [checking](account_type) account
+    - tell me how much I have in [savings](account_type)
+
+- intent: out_of_scope
+  examples: |
+    - I want to apply for a loan
+    - how do I open a new account
+    - I lost my credit card
+    - change my password
+    - reset my PIN
+    - I want to invest in stocks
+    - set up direct deposit
+    - can I get a mortgage
+    - order new checks
+    - report fraud
+    - update my address
+    - I need financial advice
+    - how do I activate my card
+    - cancel my account
+    - apply for a credit card
+    - what are your interest rates
+    - schedule an appointment
+    - what are your business hours
+    - where is the nearest branch
+    - I need to deposit a check
+    - can I get an overdraft fee waived
+    - I need a statement
+    - what's my credit score
+    - I need to dispute a transaction
+    - set up automatic payments
+    - I need a cashier's check
+    - what's the routing number

@@ -1,0 +1,85 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - chitchat
+  - send_money
+  - query_balance
+  - out_of_scope
+
+entities:
+  - recipient
+  - amount
+  - account_type
+
+slots:
+  recipient:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: recipient
+  
+  amount:
+    type: float
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: amount
+  
+  account_type:
+    type: categorical
+    values:
+      - savings
+      - checking
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: account_type
+
+actions:
+  - action_check_balance
+
+responses:
+  utter_greet:
+    - text: "Hello! I'm your banking assistant. How can I help you today?"
+    - text: "Hi there! Welcome to our banking service. What would you like to do?"
+    - text: "Good day! I'm here to assist with your banking needs. How may I help you?"
+
+  utter_goodbye:
+    - text: "Goodbye! Have a great day."
+    - text: "Thanks for using our banking service. Goodbye!"
+    - text: "It was nice assisting you. Until next time!"
+
+  utter_chitchat:
+    - text: "I'm a banking assistant designed to help you with basic banking tasks like checking your balance or sending money."
+    - text: "I was created to make banking easier for you. How can I assist you today?"
+
+  utter_send_money_form_complete:
+    - text: "I've initiated a transfer of ${amount} to {recipient}. The transaction should be completed within 24 hours."
+    - text: "Your payment of ${amount} to {recipient} has been processed. It will be completed shortly."
+
+  utter_ask_recipient:
+    - text: "Who would you like to send money to?"
+    - text: "Please provide the name or account details of the recipient."
+
+  utter_ask_amount:
+    - text: "How much would you like to send?"
+    - text: "What amount would you like to transfer?"
+
+  utter_out_of_scope:
+    - text: "I'm sorry, I can only help with checking your balance and sending money at the moment. For other banking services, please call our customer service at 1-800-BANK or visit our website."
+
+  utter_default:
+    - text: "I didn't quite catch that. I can help you with checking your balance or sending money."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+forms:
+  send_money_form:
+    required_slots:
+      - recipient
+      - amount

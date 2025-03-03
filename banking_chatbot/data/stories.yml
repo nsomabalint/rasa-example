@@ -1,0 +1,122 @@
+version: "3.1"
+
+stories:
+  - story: Greet and check balance
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: query_balance
+      - action: action_check_balance
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: Greet and send money complete flow
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: send_money
+        entities:
+          - recipient: "John"
+          - amount: 100
+      - action: send_money_form
+      - active_loop: send_money_form
+      - active_loop: null
+      - action: utter_send_money_form_complete
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: Greet and send money partial information (ask for amount)
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: send_money
+        entities:
+          - recipient: "Sarah"
+      - action: send_money_form
+      - active_loop: send_money_form
+      - slot_was_set:
+          - requested_slot: amount
+      - action: utter_send_money_ask_amount
+      - intent: send_money
+        entities:
+          - amount: 50
+      - action: send_money_form
+      - active_loop: null
+      - action: utter_send_money_form_complete
+      - intent: goodbye
+      - action: utter_goodbye
+      
+  - story: Send money with missing recipient
+    steps:
+      - intent: send_money
+        entities:
+          - amount: 100
+      - action: send_money_form
+      - active_loop: send_money_form
+      - slot_was_set:
+          - requested_slot: recipient
+      - action: utter_send_money_ask_recipient
+      - intent: send_money
+        entities:
+          - recipient: "Mom"
+      - action: send_money_form
+      - active_loop: null
+      - action: utter_send_money_form_complete
+
+  - story: Chitchat and then check balance
+    steps:
+      - intent: chitchat
+      - action: utter_chitchat
+      - intent: query_balance
+      - action: action_check_balance
+
+  - story: Check balance for specific account
+    steps:
+      - intent: query_balance
+        entities:
+          - account_type: "savings"
+      - action: action_check_balance
+
+  - story: Out of scope then redirect to supported feature
+    steps:
+      - intent: out_of_scope
+      - action: utter_out_of_scope
+      - intent: query_balance
+      - action: action_check_balance
+
+  - story: Send money then check balance
+    steps:
+      - intent: send_money
+        entities:
+          - recipient: "Mom"
+          - amount: 200
+      - action: send_money_form
+      - active_loop: send_money_form
+      - active_loop: null
+      - action: utter_send_money_form_complete
+      - intent: query_balance
+      - action: action_check_balance
+
+  - story: Greet, chitchat, and then send money
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: chitchat
+      - action: utter_chitchat
+      - intent: send_money
+      - action: send_money_form
+      - active_loop: send_money_form
+      - slot_was_set:
+          - requested_slot: recipient
+      - intent: send_money
+        entities:
+          - recipient: "David"
+      - action: send_money_form
+      - slot_was_set:
+          - requested_slot: amount
+      - intent: send_money
+        entities:
+          - amount: 75
+      - action: send_money_form
+      - active_loop: null
+      - action: utter_send_money_form_complete

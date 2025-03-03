@@ -16,7 +16,7 @@ Get started with Rasa Pro in the browser using GitHub Codespaces.
 3. **Initialize a New Project:**
    - In the terminal, run:
      ```
-     rasa init --template tutorial
+     rasa init
      ```
      and follow the instructions.
 
