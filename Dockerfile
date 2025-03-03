@@ -1,12 +1,22 @@
 FROM rasa/rasa:latest
 
-WORKDIR /banking_chatbot
-COPY . /banking_chatbot
+WORKDIR /app
 
-RUN rasa train
+# Copy the banking_chatbot directory to the container
+COPY banking_chatbot /app/banking_chatbot
 
-VOLUME /banking_chatbot/models
+# Set working directory to the banking_chatbot folder
+WORKDIR /app/banking_chatbot
+
+# Check if config.yml exists before training
+RUN if [ -f "config.yml" ]; then \
+      rasa train; \
+    else \
+      echo "config.yml not found. Please ensure it exists in the banking_chatbot directory."; \
+      exit 1; \
+    fi
 
 EXPOSE 5005
 
+# Run the Rasa server
 CMD ["run", "--enable-api", "--cors", "*"]
