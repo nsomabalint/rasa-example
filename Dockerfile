@@ -8,7 +8,16 @@ COPY banking_chatbot /app/banking_chatbot
 # Set working directory to the banking_chatbot folder
 WORKDIR /app/banking_chatbot
 
-# Check if config.yml exists before training
+# Create models directory with proper permissions
+RUN mkdir -p /app/banking_chatbot/models
+
+# Set proper permissions for the Rasa user to write to config files
+RUN chown -R 1001:1001 /app/banking_chatbot
+
+# Switch to the rasa user (UID 1001)
+USER 1001
+
+# Train the model after we've set proper permissions
 RUN if [ -f "config.yml" ]; then \
       rasa train; \
     else \
