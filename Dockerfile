@@ -1,5 +1,8 @@
 FROM rasa/rasa:latest
 
+# Start as root user to handle permissions
+USER root
+
 WORKDIR /app
 
 # Copy the banking_chatbot directory to the container
@@ -11,8 +14,8 @@ WORKDIR /app/banking_chatbot
 # Create models directory with proper permissions
 RUN mkdir -p /app/banking_chatbot/models
 
-# Set proper permissions for the Rasa user to write to config files
-RUN chown -R 1001:1001 /app/banking_chatbot
+# Set proper permissions for the Rasa user
+RUN chown -R 1001:1001 /app
 
 # Switch to the rasa user (UID 1001)
 USER 1001
