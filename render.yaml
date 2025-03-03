@@ -3,7 +3,8 @@ services:
     name: banking-chatbot
     env: docker
     plan: free
-    healthCheckPath: /
+    # Explicitly set the start command
+    startCommand: rasa run --enable-api --cors "*" --port $PORT
     envVars:
       - key: PORT
         value: 5005
