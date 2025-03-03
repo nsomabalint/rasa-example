@@ -24,4 +24,4 @@ RUN rasa train || echo "Model already exists"
 EXPOSE 5005
 
 # Use a direct command that reads the PORT environment variable
-CMD PORT=${PORT:-5005} && rasa run --enable-api --cors "*" --port $PORT
+CMD ["sh", "-c", "rasa run --enable-api --cors \"*\" --port ${PORT:-5005}"]
