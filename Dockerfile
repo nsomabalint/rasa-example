@@ -1,10 +1,12 @@
-FROM rasa/rasa:latest
+FROM rasa/rasa:3.6.20
 
 # Switch to root for setup
 USER root
 
 # Set working directory
 WORKDIR /app
+
+RUN pip install --no-cache-dir rasa-sdk==3.6.2
 
 # Copy application code
 COPY banking_chatbot /app/banking_chatbot
