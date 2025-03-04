@@ -13,3 +13,4 @@ services:
           name: banking-chatbot
           property: host
     healthCheckPath: /
+    port: 5005
