@@ -20,6 +20,8 @@ Rasa consists of two main components working together:
 
 Additionally, Rasa uses an **Action Server** that runs your custom code to perform business logic, API calls, database queries, or any other external interactions your bot needs. The action server communicates with the main Rasa server through a REST API.
 
+![Rasa architecture](image.png)
+
 ### Key Rasa Commands
 
 - `rasa init`: Create a new Rasa project with sample files

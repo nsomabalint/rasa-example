@@ -31,4 +31,4 @@ ENV PORT=5005
 EXPOSE 5005
 
 # Command to run the application - FIXED
-CMD ["run", "--enable-api", "--cors", "*", "--port", "$PORT"]
+CMD ["run", "--enable-api", "--cors", "*", "--port", "5005"]
