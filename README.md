@@ -33,20 +33,6 @@ Additionally, Rasa uses an **Action Server** that runs your custom code to perfo
 - `rasa data validate`: Check your training data for potential errors
 - `rasa test`: Evaluate your bot's performance on test data
 
-### Starting the Action Server
-
-To run custom actions, you need to start the Action Server alongside your Rasa server:
-
-```bash
-# In one terminal, start the Rasa server
-rasa run --enable-api --cors "*"
-
-# In another terminal, start the Action Server
-rasa run actions
-```
-
-Rasa 3.10+ can automatically handle actions without a separate server, using the `actions_module` setting in `endpoints.yml`.
-
 ### How Rasa Works
 
 Rasa processes conversations through a pipeline:
