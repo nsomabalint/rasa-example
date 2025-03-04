@@ -17,4 +17,11 @@ RUN rasa train || echo "Model already exists"
 
 EXPOSE 5005
 
-CMD rasa run --enable-api --cors "*" --port 5005
+COPY entrypoint.sh /app/entrypoint.sh
+
+RUN chmod +x /app/entrypoint.sh
+
+ENTRYPOINT ["/app/entrypoint.sh"]
+
+# Empty CMD that can be safely overridden
+CMD []
