@@ -17,6 +17,4 @@ RUN rasa train || echo "Model already exists"
 
 EXPOSE 5005
 
-# Default command just to keep container alive
-# Render's start command will override this
-CMD ["tail", "-f", "/dev/null"]
+CMD rasa run --enable-api --cors "*" --port 5005
