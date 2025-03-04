@@ -4,7 +4,12 @@ services:
     runtime: docker
     plan: free
     dockerfilePath: ./Dockerfile
-    # No need to specify startCommand as it's defined in the Dockerfile
     envVars:
       - key: PORT
         value: 5005
+      - key: RENDER_EXTERNAL_HOSTNAME
+        fromService:
+          type: web
+          name: banking-chatbot
+          property: host
+    healthCheckPath: /

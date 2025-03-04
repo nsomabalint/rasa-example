@@ -30,5 +30,5 @@ ENV PORT=5005
 # Expose port for the application
 EXPOSE 5005
 
-# Command to run the application
-CMD rasa run --enable-api --cors "*" --port $PORT
+# Command to run the application - FIXED
+CMD ["run", "--enable-api", "--cors", "*", "--port", "$PORT"]
