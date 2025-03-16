@@ -1,34 +1,28 @@
-FROM rasa/rasa:3.6.20
+FROM python:3.9-slim
 
-# Switch to root for setup
-USER root
-
-# Set working directory
 WORKDIR /app
 
-RUN pip install --no-cache-dir rasa-sdk==3.6.2
+# Create required directories with proper permissions
+RUN mkdir -p /tmp/matplotlib /tmp/rasa && \
+    chmod 777 /tmp/matplotlib /tmp/rasa
 
-# Copy application code
-COPY banking_chatbot /app/banking_chatbot
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
 
-# Change to application directory
-WORKDIR /app/banking_chatbot
+COPY . /app/
 
-# Create models directory with proper permissions
-RUN mkdir -p /app/banking_chatbot/models && \
-    chown -R 1001:1001 /app
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Switch back to non-root user (1001 is the default rasa user)
-USER 1001
+# Train a model
+RUN mkdir -p models && \
+    RASA_USER_HOME=/tmp/rasa rasa train
+  
+# Expose port for Rasa
+EXPOSE 7860
 
-# Train the model (with fallback if already exists)
-RUN rasa train || echo "Model already exists"
-
-# The PORT environment variable will be used by Render
-ENV PORT=5005
-
-# Expose port for the application
-EXPOSE 5005
-
-# Command to run the application - FIXED
-CMD ["run", "--enable-api", "--cors", "*", "--port", "5005", "--interface", "0.0.0.0"]
+# Start the app
+CMD ["python", "app.py"]
