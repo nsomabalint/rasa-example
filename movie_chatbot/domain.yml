@@ -1,0 +1,23 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - recommend_movie
+
+entities:
+  - movie
+
+slots:
+  movie:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: movie
+
+responses:
+  utter_greet:
+  - text: "Hey! I'm a movie recommendation bot. Tell me a movie you've liked!"
+
+  utter_goodbye:
+  - text: "Bye"

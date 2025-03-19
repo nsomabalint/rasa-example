@@ -1,0 +1,78 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - hey there
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: recommend_movie
+  examples: |
+    - what is your favourite movie?
+    - can you recommend a movie like [Matrix](movie)?
+    - I liked The [Godfather](movie), any similar movies?
+    - recommend me a movie like [Inception](movie)
+    - what movies are similar to [Star Wars](movie)?
+    - any recommendations for a movie like [Pulp Fiction](movie)?
+    - I enjoyed [Titanic](movie), what else might I like?
+    - movies similar to [Avatar](movie)
+    - what should I watch if I liked The [Shawshank Redemption](movie)?
+    - recommend movie [Toy Story](movie)
+    - I want to watch something like [Fight Club](movie)
+    - what's similar to [Forrest Gump](movie)?
+    - recommend movies like THE [DARK KNIGHT](movie)
+    - i loved [jurassic park](movie)
+    - Have you seen [parasite](movie)?
+    - Movies like [La La Land](movie) please
+    - Recommend something similar to [interstellar](movie)
+    - I REALLY ENJOYED [BLACK PANTHER](movie)
+    - suggest films like [shrek](movie)
+    - anything similar to the [lord of the rings](movie)?
+    - what would you recommend if I liked [JOKER](movie)?
+    - tell me about films like [harry potter](movie)
+    - movies in the same genre as the [matrix](movie)
+    - i recently watched [inception](movie) and loved it
+    - What can I watch after The [Avengers](movie)?
+    - Similar to [Spider-Man](movie)?
+    - loved THE [LION KING](movie), more like it?
+    - need recommendations based on [mad max](movie)
+    - [gladiator](movie) was awesome, more like it?
+    - what's comparable to [batman begins](movie)?
+    - I just saw The [Social Network](movie)
+    - do you know any movies like [Top Gun](movie)?
+    - what films are similar to The [Green Mile](movie)?
+    - I'm a big fan of The [Departed](movie)
+    - recommend a film like [Frozen](movie)
+    - have you watched The [Sixth Sense](movie)?
+    - movies in the same vein as The [Dark Knight Rises](movie)
+    - I really enjoyed [Finding Nemo](movie)
+    - The [Silence of the Lambs](movie) was chilling, anything similar?
+    - recommend films similar to [Back to the Future](movie)
+    - what should I watch after The [Terminator](movie)?
+    - I just finished The [Breakfast Club](movie), what next?
+    - is there anything similar to [Whiplash](movie)?
+    - I'm a big fan of The [Princess Bride](movie)
+    - do you know movies comparable to The [Truman Show](movie)?
+    - what's like [Memento](movie)?
+    - I want to watch movies like The [Prestige](movie)
